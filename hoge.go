@@ -1,4 +1,7 @@
 package main
+
+// import "fmt"
+
 // import "fmt"
 // var global string
 // global = "initial"
@@ -15,4 +18,3 @@ func hoge() {
     // fmt.Println("Hello, World!")
 	global = "initial"
 }
-
