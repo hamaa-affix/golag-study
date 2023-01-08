@@ -1,5 +1,7 @@
 package main
+
 import (
+	"errors"
 	"fmt"
 )
 
@@ -23,12 +25,12 @@ func main() {
 	}
 }
 
-func isString(arg string) bool {
+func isString(arg string) error {
 	isString := interface{}(arg)
 
 	if _, ok := isString.(string); !ok {
-		return false
+		return errors.New("errorですよ")
 	}
 
-	return true
+	return nil
 }
