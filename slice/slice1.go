@@ -1,6 +1,8 @@
 package slice
 
-import ()
+import (
+	"fmt"
+)
 
 /*
     user定義型を作成してslice型に組み込んでください。
@@ -10,9 +12,19 @@ import ()
 	}
 */
 
+type User struct {
+	name string
+	age int
+}
 
-func slice2() {
+
+
+func Slice2() {
 	// sliceの作成 sliceの要素は2つ追加してください
-
+	users := []User{{name: "tmp1" ,age: 90},{name: "tmp2" ,age: 90}}
 	// for range構文を用いて作成したnameを標準出力してください
+	for _, v := range users {
+		fmt.Println(v.name)
+    }
+
 }

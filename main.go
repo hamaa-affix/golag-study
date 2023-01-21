@@ -2,8 +2,10 @@ package main
 
 import (
 	"golag-study/method"
+	// "golag-study/slice"
 )
 
 func main() {
-	method.Method()
+	method.Method2()
+	// slice.Slice()
 }
