@@ -1,11 +1,12 @@
 package main
 
 import (
-	"golag-study/method"
+	// "golag-study/method"
 	// "golag-study/slice"
+	"golag-study/itf"
 )
 
 func main() {
-	method.Method2()
+	itf.Itf()
 	// slice.Slice()
 }
