@@ -5,16 +5,19 @@ package main
 // import "fmt"
 // var global string
 // global = "initial"
-var(global = "hogehoge")
+var (
+	global = "hogehoge"
+)
+
 const tmp = "foo"
 const (
-    Red  = "foobar"
+	Red = "foobar"
 	Blue
-    Green
+	Green
 )
 
 func hoge() {
-    // コンソールにメッセージが出力される
-    // fmt.Println("Hello, World!")
+	// コンソールにメッセージが出力される
+	// fmt.Println("Hello, World!")
 	global = "initial"
 }

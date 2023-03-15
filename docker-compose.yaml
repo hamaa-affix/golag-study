@@ -1,0 +1,48 @@
+version: '3'
+services:
+  app:
+    container_name: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # ports:
+    # - "8080:8080"
+    volumes:
+    - .:/app
+    tty: true
+    environment:
+      - DB_DRIVER_NAME=myql
+      - DB_PORT=3306
+      - DB_HOST=myql
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=hoge
+      - MYSQL_USER=hoge
+      - MYSQL_PASSWORD=password
+      - DATABASE_CONECTION_URL=hoge:password@tcp(mysql:3360)/hoge
+    networks:
+      - study
+  db:
+    container_name: mysql
+    image: mysql:8.0
+    volumes:
+      - db-store:/var/lib/mysql
+      - ./.docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    environment:
+      - MYSQL_DATABASE=hoge
+      - MYSQL_USER=hoge
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+      - TZ=Asia/Tokyo
+    ports:
+      - "3306:3306"
+    networks:
+      - study
+volumes:
+  db-store:
+# volumes:
+#   logvolume01: {}
+
+
+networks:
+  study:
+    external: true
