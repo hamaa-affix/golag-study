@@ -18,7 +18,9 @@ services:
       - MYSQL_DATABASE=hoge
       - MYSQL_USER=hoge
       - MYSQL_PASSWORD=password
-      - DATABASE_CONECTION_URL=hoge:password@tcp(mysql:3360)/hoge
+      - DATABASE_CONECTION_URL=hoge:password@tcp(mysql:3306)/hoge
+      - MIGRATION_URL=mysql://hoge:password@tcp(mysql:3306)/hoge
+      # - dataname='postgres://postgres:password@postgres:5432/example?sslmode=disable'
     networks:
       - study
   db:
@@ -45,4 +47,4 @@ volumes:
 
 networks:
   study:
-    external: true
+    driver: bridge
