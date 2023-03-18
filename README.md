@@ -23,10 +23,10 @@ $ migrate create -ext sql -dir db/sql/  -seq  create_xxxxxx_xxxxxx_table
 
 you can do migration 
 ```
-$ migrate -database ${DATABASE_CONECTION_URL} -path ./db/sql up
+$ migrate -database ${MIGRATION_URL} -path ./db/sql up
 ```
 
 you can do rollback 
 ```
-$ migrate -database ${DATABASE_CONECTION_URL} -path ./db/sql down
+$ migrate -database ${MIGRATION_URL} -path ./db/sql down
 ```
