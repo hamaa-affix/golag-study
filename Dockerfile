@@ -6,6 +6,7 @@ COPY go.mod ./
 COPY go.sum ./
 
 RUN go mod download
+RUN go mod tidy
 RUN go install -tags 'mysql' github.com/golang-migrate/migrate/v4/cmd/migrate@latest
 
 
