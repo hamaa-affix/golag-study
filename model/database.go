@@ -14,7 +14,7 @@ type DBConf struct {
 	UserName   string
 	PassWord   string
 	DBName     string
-	Port       int
+	Port       string
 	DriverName string
 	Host       string
 	Err        error
@@ -24,7 +24,7 @@ func NewDBConf(
 	userName string,
 	pass string,
 	dbName string,
-	port int,
+	port string,
 	driverName string,
 	host string,
 ) *DBConf {
@@ -42,7 +42,7 @@ func (d *DBConf) CreateEndpoint() string {
 	if d.Err != nil {
 		log.Fatal("missing create db connection endpoint\nerror is %v", d.Err)
 	}
-	return fmt.Sprintf("%s:%s@tcp(%s:%d)/%s", d.UserName, d.PassWord, d.Host, d.Port, d.DBName)
+	return fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", d.UserName, d.PassWord, d.Host, d.Port, d.DBName)
 }
 
 func New() (*sql.DB, error)  {
@@ -50,9 +50,9 @@ func New() (*sql.DB, error)  {
 		os.Getenv("MYSQL_USER"),
 		os.Getenv("MYSQL_PASSWORD"),
 		os.Getenv("MYSQL_DATABASE"),
-		3306,
-		"mysql",
-		"mysql",
+		os.Getenv("DB_PORT"),
+		os.Getenv("DB_DRIVER_NAME"),
+		os.Getenv("DB_HOST"),
 	)
 
 	db, err := sql.Open("mysql", conf.CreateEndpoint())
