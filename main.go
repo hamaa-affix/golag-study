@@ -1,22 +1,23 @@
 package main
 
 import (
-	"database/sql"
-	"fmt"
-	"log"
-	"os"
-
-	_ "github.com/go-sql-driver/mysql"
-	// "io"
-	// "log"
+	// "fmt"
+	// "net/http"
+	// "golag-study/router"
+	// "golag-study/router"
+	router "golag-study/router-demo"
 	// "net/http"
 )
 
 
 
 func main() {
+	// http.Handle("/todo", http.HandlerFunc(router.TodoIndexHandler))
+	// http.Handle("/todo/post", http.HandlerFunc(router.TodoPostHandler))
+	// http.Handle("/todo/1/update", http.HandlerFunc(router.TodoUpdateHandler))
+	// http.Handle("/todo/1/delete", http.HandlerFunc(router.TodoDeleteHandler))
 
-
+	// http.ListenAndServe(":8080", nil)
 	// h1 := func(w http.ResponseWriter, _ *http.Request) {
 	// 	io.WriteString(w, "Hello from a HandleFunc #1!\n")
 	// }
@@ -28,4 +29,5 @@ func main() {
 	// http.HandleFunc("/endpoint", h2)
 
 	// log.Fatal(http.ListenAndServe(":8080", nil))
+	router.Do()
 }
