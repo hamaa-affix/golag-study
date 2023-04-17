@@ -3,13 +3,9 @@ package main
 import (
 	// "fmt"
 	// "net/http"
-	// "golag-study/router"
-	// "golag-study/router"
-	router "golag-study/router-demo"
-	// "net/http"
+
+	"golag-study/router"
 )
-
-
 
 func main() {
 	// http.Handle("/todo", http.HandlerFunc(router.TodoIndexHandler))
