@@ -13,6 +13,9 @@ func Do() {
 	// todoのルーティング
 	r.Group(func(r chi.Router) {
 		r.Get("/todo", todo.Index)
+		// r.Get("/show", todo.Show)
+		// r.Get("/store", todo.Store)
+		// r.Get("/delete", todo.Delete)
 	})
 	// r.Get("/todo/1", func(rw http.ResponseWriter, r *http.Request) {
 	// 	if err := r.ParseForm(); err != nil {
