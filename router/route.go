@@ -9,22 +9,13 @@ import (
 
 func Do() {
 	r := chi.NewRouter()
-
-	// todoのルーティング
-	r.Group(func(r chi.Router) {
-		r.Get("/todo", todo.Index)
-		// r.Get("/show", todo.Show)
-		// r.Get("/store", todo.Store)
-		// r.Get("/delete", todo.Delete)
+	r.Route("/todo", func(r chi.Router) {
+		r.Get("/", todo.Index)
+		r.Get("/1", todo.Show)
+		r.Put("/1/edit", todo.Update)
+		r.Post("/store", todo.Store)
+		r.Delete("/1/delete", todo.Delete)
 	})
-	// r.Get("/todo/1", func(rw http.ResponseWriter, r *http.Request) {
-	// 	if err := r.ParseForm(); err != nil {
-	// 		http.Error(rw, err.Error(), http.StatusBadRequest)
-	// 	}
-
-	// 	fmt.Println(r.Form)
-	// 	fmt.Fprintf(rw, "todo")
-	// })
-
+	
 	http.ListenAndServe(":8080", r)
 }

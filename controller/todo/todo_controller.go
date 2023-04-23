@@ -32,6 +32,15 @@ func Store(w http.ResponseWriter, r *http.Request){
 	fmt.Fprintf(w, "todo store")
 }
 
+func Update(w http.ResponseWriter, r *http.Request){
+	if err := r.ParseForm(); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+	}
+
+	fmt.Println(r.Form)
+	fmt.Fprintf(w, "todo update")
+}
+
 func Delete(w http.ResponseWriter, r *http.Request){
 	if err := r.ParseForm(); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
