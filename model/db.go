@@ -13,9 +13,10 @@ func NewDB() *gorm.DB {
 	if err := godotenv.Load(); err != nil {
 		log.Fatal(err)
 	}
-	
+
 	url := fmt.Sprintf(
-		"mysql://%s:%s@%s:%s/%s",
+		//"mysql://%s:%s@%s:%s/%s",
+		"%s:%s@tcp(%s:%v)/%s?charset=utf8mb4&parseTime=True&loc=Local",
 		os.Getenv("MYSQL_USER"),
 		os.Getenv("MYSQL_PASSWORD"),
 		os.Getenv("DB_HOST"),

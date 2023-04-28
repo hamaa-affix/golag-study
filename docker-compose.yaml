@@ -21,8 +21,8 @@ services:
       - DATABASE_CONNECTION_URL=hoge:password@tcp(mysql:3306)/hoge
       - MIGRATION_URL=mysql://hoge:password@db:3306/hoge
       # - dataname='postgres://postgres:password@postgres:5432/example?sslmode=disable'
-    networks:
-      - study
+    # networks:
+    #   - study
   db:
     container_name: mysql
     image: mysql:8.0
@@ -37,14 +37,14 @@ services:
       - TZ=Asia/Tokyo
     ports:
       - "3306:3306"
-    networks:
-      - study
+    # networks:
+    #   - study
 volumes:
   db-store:
 # volumes:
 #   logvolume01: {}
 
 
-networks:
-  study:
-    driver: bridge
+# networks:
+#   study:
+#     driver: bridge
