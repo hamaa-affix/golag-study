@@ -11,13 +11,13 @@ services:
     - .:/app
     tty: true
     environment:
-      - DB_DRIVER_NAME=mysql
-      - DB_PORT=3306
-      - DB_HOST=mysql
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=hoge
-      - MYSQL_USER=hoge
-      - MYSQL_PASSWORD=password
+      # - DB_DRIVER_NAME=mysql
+      # - DB_PORT=3306
+      # - DB_HOST=mysql
+      # - MYSQL_ROOT_PASSWORD=password
+      # - MYSQL_DATABASE=hoge
+      # - MYSQL_USER=hoge
+      # - MYSQL_PASSWORD=password
       - DATABASE_CONNECTION_URL=hoge:password@tcp(mysql:3306)/hoge
       - MIGRATION_URL=mysql://hoge:password@db:3306/hoge
       # - dataname='postgres://postgres:password@postgres:5432/example?sslmode=disable'

@@ -4,13 +4,16 @@ import (
 	"fmt"
 	"log"
 	"os"
-
-	// "github.com/joho/godotenv"
+	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
 func NewDB() *gorm.DB {
+	if err := godotenv.Load(); err != nil {
+		log.Fatal(err)
+	}
+	
 	url := fmt.Sprintf(
 		"mysql://%s:%s@%s:%s/%s",
 		os.Getenv("MYSQL_USER"),
@@ -19,6 +22,7 @@ func NewDB() *gorm.DB {
 		os.Getenv("DB_PORT"),
 		os.Getenv("MYSQL_DATABASE"),
 	)
+	fmt.Println(url)
 	db, err := gorm.Open(mysql.Open(url), &gorm.Config{})
 	if err != nil {
 		log.Fatal(err)

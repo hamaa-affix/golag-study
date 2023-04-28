@@ -1,4 +1,4 @@
-package migration
+package main
 
 import (
 	"fmt"
@@ -10,6 +10,6 @@ func main() {
 	defer fmt.Println("successfully migrated")
 	defer db.CloseDB(dbConn)
 	dbConn.AutoMigrate(
-		&db.Todo{},
+		&db.Task{},
 	)
 }
