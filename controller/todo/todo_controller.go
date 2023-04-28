@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 )
+/// usecaseをinjectionしたい場合は？
 
 func Index(w http.ResponseWriter, r *http.Request) {
 	if err := r.ParseForm(); err != nil {

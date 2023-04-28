@@ -10,7 +10,7 @@ import (
 
 )
 
-type DBConf struct {
+type dBConf struct {
 	UserName   string
 	PassWord   string
 	DBName     string
@@ -20,15 +20,15 @@ type DBConf struct {
 	Err        error
 }
 
-func NewDBConf(
+func newDBConf(
 	userName string,
 	pass string,
 	dbName string,
 	port string,
 	driverName string,
 	host string,
-) *DBConf {
-	return &DBConf{
+) *dBConf {
+	return &dBConf{
 		UserName:   userName,
 		PassWord:   pass,
 		DBName:     dbName,
@@ -38,15 +38,15 @@ func NewDBConf(
 	}
 }
 
-func (d *DBConf) CreateEndpoint() string {
+func (d *dBConf) CreateEndpoint() string {
 	if d.Err != nil {
 		log.Fatal("missing create db connection endpoint\nerror is %v", d.Err)
 	}
 	return fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", d.UserName, d.PassWord, d.Host, d.Port, d.DBName)
 }
 
-func New() (*sql.DB, error)  {
-	conf := NewDBConf(
+func new() (*sql.DB, error)  {
+	conf := newDBConf(
 		os.Getenv("MYSQL_USER"),
 		os.Getenv("MYSQL_PASSWORD"),
 		os.Getenv("MYSQL_DATABASE"),
