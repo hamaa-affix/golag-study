@@ -2,6 +2,7 @@ package task
 
 import (
 	"fmt"
+	"github.com/go-chi/chi/v5"
 	"html/template"
 	"net/http"
 )
@@ -21,19 +22,23 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	if err := tmpl.Execute(w, nil); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
-	
+
 }
 
-func Show(w http.ResponseWriter, r *http.Request){
+func Show(w http.ResponseWriter, r *http.Request) {
+	taskId := chi.URLParam(r, "taskId")
+	fmt.Println(taskId)
+
 	if err := r.ParseForm(); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 	}
 
 	fmt.Println(r.Form)
-	fmt.Fprintf(w, "task show")
+	fmt.Fprintf(w, "task show: "+taskId)
+
 }
 
-func Store(w http.ResponseWriter, r *http.Request){
+func Store(w http.ResponseWriter, r *http.Request) {
 	if err := r.ParseForm(); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 	}
@@ -42,7 +47,7 @@ func Store(w http.ResponseWriter, r *http.Request){
 	fmt.Fprintf(w, "task store")
 }
 
-func Update(w http.ResponseWriter, r *http.Request){
+func Update(w http.ResponseWriter, r *http.Request) {
 	if err := r.ParseForm(); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 	}
@@ -51,7 +56,7 @@ func Update(w http.ResponseWriter, r *http.Request){
 	fmt.Fprintf(w, "task update")
 }
 
-func Delete(w http.ResponseWriter, r *http.Request){
+func Delete(w http.ResponseWriter, r *http.Request) {
 	if err := r.ParseForm(); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 	}
