@@ -9,7 +9,10 @@ import (
 
 /// usecaseをinjectionしたい場合は？
 
-func Index(w http.ResponseWriter, r *http.Request) {
+type TaskContorller struct {
+}
+
+func (t *TaskContorller) Index(w http.ResponseWriter, r *http.Request) {
 	if err := r.ParseForm(); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 	}
@@ -25,7 +28,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func Show(w http.ResponseWriter, r *http.Request) {
+func (t *TaskContorller) Show(w http.ResponseWriter, r *http.Request) {
 	taskId := chi.URLParam(r, "taskId")
 	fmt.Println(taskId)
 
@@ -38,18 +41,16 @@ func Show(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func Store(w http.ResponseWriter, r *http.Request) {
+func (t *TaskContorller) Store(w http.ResponseWriter, r *http.Request) {
 	if err := r.ParseForm(); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 	}
-
-
 
 	fmt.Println(r.Form)
 	fmt.Fprintf(w, "task store")
 }
 
-func Update(w http.ResponseWriter, r *http.Request) {
+func (t *TaskContorller) Update(w http.ResponseWriter, r *http.Request) {
 	if err := r.ParseForm(); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 	}
@@ -58,7 +59,7 @@ func Update(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "task update")
 }
 
-func Delete(w http.ResponseWriter, r *http.Request) {
+func (t *TaskContorller) Delete(w http.ResponseWriter, r *http.Request) {
 	if err := r.ParseForm(); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 	}
